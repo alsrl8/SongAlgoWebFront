@@ -1,0 +1,21 @@
+.chat-message-list {
+    min-height: 0;
+    max-height: 512px;
+    overflow-y: auto;
+}
+
+.chat-message-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.chat-message-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat-message-list::-webkit-scrollbar-thumb {
+    background: #90caf9;
+}
+
+.chat-message-list::-webkit-scrollbar-thumb:hover {
+    background: #73a2c7;
+}
