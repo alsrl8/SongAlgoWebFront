@@ -23,7 +23,7 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          CHAT_SERVER_URL: ${{ secrets.CHAT_SERVER_URL }}
+          REACT_APP_CHAT_SERVER_URL: ${{ secrets.CHAT_SERVER_URL }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
