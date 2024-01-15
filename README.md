@@ -9,3 +9,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In the project directory, you can run:
 
 ### `npm start`
+
+## Github actions
+
+### AWS OpenID Connect 
+
+[aws docs](https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html)
+
+[github docs](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services)
