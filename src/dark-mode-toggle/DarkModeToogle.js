@@ -3,7 +3,7 @@ import {Switch} from '@mui/material';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 
-const _DarkModeToggle = ({darkMode, handleThemeChange}) => {
+const DarkModeToggleImpl = ({darkMode, handleThemeChange}) => {
     return (
         <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '2px'}}>
             {darkMode ? <DarkModeIcon style={{fontSize: '2rem'}}/> : <LightModeIcon style={{fontSize: '2rem'}}/>}
@@ -12,4 +12,4 @@ const _DarkModeToggle = ({darkMode, handleThemeChange}) => {
     );
 };
 
-export default _DarkModeToggle;
+export default DarkModeToggleImpl;
