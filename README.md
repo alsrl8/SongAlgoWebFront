@@ -10,6 +10,8 @@ In the project directory, you can run:
 
 ### `npm start`
 
+### `npm run build`
+
 ## Github actions
 
 ### AWS OpenID Connect 
