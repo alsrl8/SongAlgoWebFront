@@ -9,7 +9,7 @@ import ChatProgress from "./ChatProgress";
 
 const Chat = () => {
     const [input, setInput] = useState('');
-    const [isProgressing, setIsProgressing] = useState(false);
+    const [isProgressing, _] = useState(false);
     const {ws, messages, sendMessage} = useWebSocket(input, setInput);
     const theme = useTheme();
     const iconColor = getChatterIconColor(ws) !== '' ? getChatterIconColor(ws) : theme.palette.primary.main;

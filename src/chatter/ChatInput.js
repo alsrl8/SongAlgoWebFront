@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextField, Button, useTheme} from '@mui/material';
+import {Button, TextField} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
 const ChatInput = ({input, setInput, sendMessage, iconColor}) => {
