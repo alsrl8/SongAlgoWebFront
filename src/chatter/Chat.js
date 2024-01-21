@@ -19,7 +19,8 @@ const Chat = () => {
             <ChatIcon
                 style={{display: 'flex', margin: '20px', marginBottom: '40px', fontSize: '4rem', color: iconColor}}/>
             <ChatMessageList messages={messages}/>
-            <ChatInput input={input} setInput={setInput} sendMessage={sendMessage} sendInputSignal={sendInputSignal} iconColor={iconColor}/>
+            <ChatInput input={input} setInput={setInput} sendMessage={sendMessage} sendInputSignal={sendInputSignal}
+                       iconColor={iconColor}/>
             <ChatProgress isProgressing={isProgressing} setIsProgressing={setIsProgressing}/>
         </Container>
     );
