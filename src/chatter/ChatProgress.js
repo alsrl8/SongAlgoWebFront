@@ -1,21 +1,21 @@
 import {Box, Typography} from "@mui/material";
-import {useEffect} from "react";
+import {useEffect, useRef} from "react";
 
 const ChatProgress = ({isProgressing, setIsProgressing}) => {
     const timeoutDelay = 1000; // timeout in ms
-    let timeoutTimer = null;
+    const timeoutTimerRef = useRef();
 
     useEffect(() => {
         if (isProgressing) {
-            clearTimeout(timeoutTimer);
-            timeoutTimer = setTimeout(() => {
+            clearTimeout(timeoutTimerRef.current);
+            timeoutTimerRef.current = setTimeout(() => {
                 setIsProgressing(false);
             }, timeoutDelay);
         }
         return () => {
-            clearTimeout(timeoutTimer);
+            clearTimeout(timeoutTimerRef.current);
         };
-    }, [isProgressing]);
+    }, [isProgressing, setIsProgressing, timeoutDelay]); // Add timeoutDelay to the dependency array if its value can change over time
 
     return isProgressing && (<Box display="flex" alignItems="center" style={{margin: '10px'}}>
         <Box

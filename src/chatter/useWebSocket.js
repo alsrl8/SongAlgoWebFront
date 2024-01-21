@@ -17,7 +17,7 @@ const useWebSocket = (input, setInput, setIsProgressing) => {
         };
         setWs(socket);
         return () => socket.close();
-    }, []);
+    }, [setIsProgressing]);
 
     const sendMessage = () => {
         if (ws && input.trim()) {
