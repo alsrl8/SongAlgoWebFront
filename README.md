@@ -28,3 +28,9 @@ In the project directory, you can run:
 ```
 REACT_APP_CHAT_SERVER_URL=ws://localhost:8080/chat
 ```
+
+### Production Environment
+
+```
+Github Action Secrets
+```
