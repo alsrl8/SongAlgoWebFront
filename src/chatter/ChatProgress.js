@@ -1,7 +1,23 @@
 import {Box, Typography} from "@mui/material";
+import {useEffect} from "react";
 
-const ChatProgress = ({isProgressing}) => {
-    return isProgressing && ( <Box display="flex" alignItems="center" style={{margin: '10px'}}>
+const ChatProgress = ({isProgressing, setIsProgressing}) => {
+    const timeoutDelay = 1000; // timeout in ms
+    let timeoutTimer = null;
+
+    useEffect(() => {
+        if (isProgressing) {
+            clearTimeout(timeoutTimer);
+            timeoutTimer = setTimeout(() => {
+                setIsProgressing(false);
+            }, timeoutDelay);
+        }
+        return () => {
+            clearTimeout(timeoutTimer);
+        };
+    }, [isProgressing]);
+
+    return isProgressing && (<Box display="flex" alignItems="center" style={{margin: '10px'}}>
         <Box
             width={10}
             height={10}

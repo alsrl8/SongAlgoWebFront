@@ -1,13 +1,19 @@
 import {useEffect, useState} from 'react';
 
-const useWebSocket = (input, setInput) => {
+const useWebSocket = (input, setInput, setIsProgressing) => {
     const [ws, setWs] = useState(null);
     const [messages, setMessages] = useState([]);
 
+    // Handle messages from server
     useEffect(() => {
         const socket = new WebSocket(process.env.REACT_APP_CHAT_SERVER_URL);
-        socket.onmessage = message => {
-            setMessages(prev => [...prev, message.data]);
+        socket.onmessage = serverMsg => {
+            const message = JSON.parse(serverMsg.data);
+            if (message.type === 0) { // Chat
+                setMessages(prev => [...prev, message.text]);
+            } else if (message.type === 1) { // InputSignal
+                setIsProgressing(true);
+            }
         };
         setWs(socket);
         return () => socket.close();
@@ -15,12 +21,19 @@ const useWebSocket = (input, setInput) => {
 
     const sendMessage = () => {
         if (ws && input.trim()) {
-            ws.send(input);
+            ws.send(JSON.stringify({ type: 0, user: 'user', text: input }));
+            setMessages(prev => [...prev, input])
             setInput('');
         }
     };
 
-    return {ws, messages, sendMessage};
+    const sendInputSignal = () => {
+        if (ws) {
+            ws.send(JSON.stringify({type: 1}));
+        }
+    }
+
+    return {ws, messages, sendMessage, sendInputSignal};
 };
 
 export default useWebSocket;
