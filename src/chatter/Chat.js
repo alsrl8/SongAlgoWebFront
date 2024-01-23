@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {Container, useTheme} from '@mui/material';
-import ChatIcon from '@mui/icons-material/Chat';
 import useWebSocket from './useWebSocket';
 import ChatMessageList from './ChatMessageList';
 import ChatInput from './ChatInput';
 import {getChatterIconColor} from "../utils/chatter";
 import ChatProgress from "./ChatProgress";
+import ChatHeader from "./ChatHeader";
 
 const Chat = () => {
     const [input, setInput] = useState('');
@@ -16,8 +16,7 @@ const Chat = () => {
 
     return (
         <Container maxWidth="sm">
-            <ChatIcon
-                style={{display: 'flex', margin: '20px', marginBottom: '40px', fontSize: '4rem', color: iconColor}}/>
+            <ChatHeader iconColor={iconColor}/>
             <ChatMessageList messages={messages}/>
             <ChatInput input={input} setInput={setInput} sendMessage={sendMessage} sendInputSignal={sendInputSignal}
                        iconColor={iconColor}/>
