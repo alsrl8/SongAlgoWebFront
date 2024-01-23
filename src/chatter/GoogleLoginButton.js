@@ -7,7 +7,6 @@ const GoogleLoginButton = () => {
             const data = {
                 code: codeResponse.code,
             };
-            console.log(data);
 
             try {
                 const response = await fetch(process.env.REACT_APP_USER_SERVER_URL, {
