@@ -2,13 +2,12 @@ import {useGoogleLogin} from "@react-oauth/google";
 
 const GoogleLoginButton = () => {
 
-
     const googleLogin = useGoogleLogin({
-        // flow: 'auth-code',
-        onSuccess: async (codeResponse) => {
-            console.log(codeResponse);
+        onSuccess: (codeResponse) => {
+            console.log(codeResponse)
         },
         onError: errorResponse => console.log(errorResponse),
+        flow: 'auth-code',
     });
 
     return (
