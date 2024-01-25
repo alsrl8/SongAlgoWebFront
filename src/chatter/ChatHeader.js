@@ -3,7 +3,7 @@ import React from "react";
 import {Grid} from "@mui/material";
 import Auth from "../auth";
 
-const ChatHeader = ({iconColor}) => {
+const ChatHeader = ({userName, setUserName, iconColor}) => {
     return (
         <Grid container>
             <Grid item>
@@ -17,7 +17,7 @@ const ChatHeader = ({iconColor}) => {
                     }}/>
             </Grid>
             <Grid item>
-                <Auth/>
+                <Auth userName={userName} setUserName={setUserName}/>
             </Grid>
         </Grid>
     );

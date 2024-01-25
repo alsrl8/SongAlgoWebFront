@@ -7,16 +7,16 @@ import {getChatterIconColor} from "../utils/chatter";
 import ChatProgress from "./ChatProgress";
 import ChatHeader from "./ChatHeader";
 
-const Chat = () => {
+const Chat = ({userName, setUserName}) => {
     const [input, setInput] = useState('');
     const [isProgressing, setIsProgressing] = useState(false);
-    const {ws, messages, sendMessage, sendInputSignal} = useWebSocket(input, setInput, setIsProgressing);
+    const {ws, messages, sendMessage, sendInputSignal} = useWebSocket(userName, input, setInput, setIsProgressing);
     const theme = useTheme();
     const iconColor = getChatterIconColor(ws) !== '' ? getChatterIconColor(ws) : theme.palette.primary.main;
 
     return (
         <Container maxWidth="sm">
-            <ChatHeader iconColor={iconColor}/>
+            <ChatHeader userName={userName} setUserName={setUserName} iconColor={iconColor} />
             <ChatMessageList messages={messages}/>
             <ChatInput input={input} setInput={setInput} sendMessage={sendMessage} sendInputSignal={sendInputSignal}
                        iconColor={iconColor}/>

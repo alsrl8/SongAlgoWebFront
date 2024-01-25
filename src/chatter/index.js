@@ -1,7 +1,9 @@
 import Chat from "./Chat";
+import {useState} from "react";
 
 const Chatter = () => {
-    return <Chat />
+    const [userName, setUserName] = useState('');
+    return <Chat userName={userName} setUserName={setUserName}/>
 }
 
 export default Chatter

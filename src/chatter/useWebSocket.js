@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 
-const useWebSocket = (input, setInput, setIsProgressing) => {
+const useWebSocket = (userName, input, setInput, setIsProgressing) => {
     const [ws, setWs] = useState(null);
     const [messages, setMessages] = useState([]);
 
@@ -22,7 +22,8 @@ const useWebSocket = (input, setInput, setIsProgressing) => {
     const sendMessage = () => {
         if (ws && input.trim()) {
             ws.send(JSON.stringify({type: 0, user: 'user', text: input}));
-            setMessages(prev => [...prev, input])
+            const inputWithUserName = userName === "" ? input : "[ " + userName + "]" + " " + input
+            setMessages(prev => [...prev, inputWithUserName])
             setInput('');
         }
     };
