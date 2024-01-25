@@ -22,7 +22,7 @@ const useWebSocket = (userName, input, setInput, setIsProgressing) => {
     const sendMessage = () => {
         if (ws && input.trim()) {
             ws.send(JSON.stringify({type: 0, user: 'user', text: input}));
-            const inputWithUserName = userName === "" ? input : "[ " + userName + "]" + " " + input
+            const inputWithUserName = userName === "" ? input : "[ " + userName + "] " + input
             setMessages(prev => [...prev, inputWithUserName])
             setInput('');
         }
