@@ -13,13 +13,14 @@ const Chat = ({userName, setUserName}) => {
     const {ws, messages, sendMessage, sendInputSignal} = useWebSocket(userName, input, setInput, setIsProgressing);
     const theme = useTheme();
     const iconColor = getChatterIconColor(ws) !== '' ? getChatterIconColor(ws) : theme.palette.primary.main;
+    const [isChatInputValid, setIsChatInputValid] = useState(false);
 
     return (
         <Container maxWidth="sm">
-            <ChatHeader userName={userName} setUserName={setUserName} iconColor={iconColor} />
+            <ChatHeader userName={userName} setUserName={setUserName} iconColor={iconColor} setIsChatInputValid={setIsChatInputValid}/>
             <ChatMessageList messages={messages}/>
             <ChatInput input={input} setInput={setInput} sendMessage={sendMessage} sendInputSignal={sendInputSignal}
-                       iconColor={iconColor}/>
+                       iconColor={iconColor} isChatInputValid={isChatInputValid}/>
             <ChatProgress isProgressing={isProgressing} setIsProgressing={setIsProgressing}/>
         </Container>
     );

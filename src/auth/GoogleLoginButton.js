@@ -1,6 +1,6 @@
 import {useGoogleLogin} from "@react-oauth/google";
 
-const GoogleLoginButton = ({userName, setUserName}) => {
+const GoogleLoginButton = ({userName, setUserName, setIsChatInputValid}) => {
 
     const googleLogin = useGoogleLogin({
         onSuccess: async (codeResponse) => {
@@ -19,6 +19,7 @@ const GoogleLoginButton = ({userName, setUserName}) => {
 
                 const responseData = await response.json();
                 setUserName(responseData.ClientInfo.name);
+                setIsChatInputValid(true);
             } catch (error) {
                 console.error('Error sending data to server:', error);
             }
