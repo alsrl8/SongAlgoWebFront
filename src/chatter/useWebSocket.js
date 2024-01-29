@@ -10,7 +10,8 @@ const useWebSocket = (userName, input, setInput, setIsProgressing) => {
         socket.onmessage = serverMsg => {
             const message = JSON.parse(serverMsg.data);
             if (message.type === 0) { // Chat
-                setMessages(prev => [...prev, message.text]);
+                const newMsg = "[ " + message.user + " ] " + message.text
+                setMessages(prev => [...prev, newMsg]);
             } else if (message.type === 1) { // InputSignal
                 setIsProgressing(true);
             }
@@ -24,8 +25,8 @@ const useWebSocket = (userName, input, setInput, setIsProgressing) => {
             if (userName === '') {
 
             }
-            ws.send(JSON.stringify({type: 0, user: 'user', text: input}));
-            const inputWithUserName = userName === "" ? input : "[ " + userName + "] " + input
+            ws.send(JSON.stringify({type: 0, user: userName, text: input}));
+            const inputWithUserName = userName === "" ? input : "[ " + userName + " ] " + input
             setMessages(prev => [...prev, inputWithUserName])
             setInput('');
         }
